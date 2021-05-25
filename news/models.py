@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class News(models.Model):
+    title = models.CharField(max_lenght=150)
+    content = models.TextField()
+    created_ad = models.DateTimeField(auto_now_add=True)
+    updated_ad = models.DateTimeField(auto_now=True)
+    photo = models.imageField(upload_to='photos/%Y/%m/%d/')
+    is_published = models.BooleanField(default=True)
+
