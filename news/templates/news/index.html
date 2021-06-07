@@ -37,9 +37,18 @@
                 Категория: {{ i.category }}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ i.title }}</h5>
-                <p class="card-text">{{ i.content }}</p>
-                <a href="#" class="btn btn-primary">Read more</a>
+                <div class="media">
+                    {% if i.photo %}
+                    <img src="{{ i.photo.url }}" alt="" width="350px" height="250" class="mr-3">
+                    {% else %}
+                    <img src="https://picsum.photos/200" alt="" width="350px" height="250" class="mr-3">
+                    {% endif %}
+                    <div class="media-body">
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        <p class="card-text">{{ i.content }}</p>
+                        <a href="#" class="btn btn-primary">Read more</a>
+                    </div>
+                </div>
             </div>
             <div class="card-footer text-muted">
                 {{ i.created_ad }}
