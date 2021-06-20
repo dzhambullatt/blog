@@ -1,10 +1,10 @@
-<!--{% load news_tags %}-->
-<!--<div class="list-group">-->
-<!--    {% get_categories as categoris %}-->
-<!--    {% for i in categoris %}-->
-<!--    <a href="{% url 'category' i.pk %}" class="list-group-item list-group-item-action">{{ i.title }}</a>-->
-<!--    {% endfor %}-->
-<!--</div>-->
+{% load news_tags %}
+<div class="list-group">
+    {% get_categories as categoris %}
+    {% for i in categoris %}
+    <a href="{% url 'category' i.pk %}" class="list-group-item list-group-item-action">{{ i.title }}</a>
+    {% endfor %}
+</div>
 
 <br>
 
