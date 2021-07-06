@@ -11,6 +11,8 @@ Create news
 {% block content %}
 <h1>Create Your News Here</h1>
 <form action="{% url 'add_news' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
 
     <button type="submit" class="btn btn-primary btn-block">ADD NEWS</button>
 </form>
