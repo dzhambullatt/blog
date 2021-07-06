@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import NewsForm
 
 from .models import *
 
@@ -25,4 +26,8 @@ def view_news(request, news_id):
 
 
 def add_news(request):
-    return render(request, 'news/add_news.html')
+    if request.method == 'POST':
+        pass
+    else:
+        form = NewsForm()
+    return render(request, 'news/add_news.html', {'form': form})
