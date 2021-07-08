@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import NewsForm
 
@@ -31,6 +31,7 @@ def add_news(request):
         if form.is_valid():
             #print(form.cleaned_data)
             News.objects.create(**form.cleaned_data)
+            redirect('home')
     else:
         form = NewsForm()
     return render(request, 'news/add_news.html', {'form': form})
