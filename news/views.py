@@ -31,7 +31,7 @@ def add_news(request):
         if form.is_valid():
             #print(form.cleaned_data)
             News.objects.create(**form.cleaned_data)
-            redirect('home')
+            return redirect('home')
     else:
         form = NewsForm()
     return render(request, 'news/add_news.html', {'form': form})
