@@ -27,7 +27,7 @@ def view_news(request, news_id):
 
 def add_news(request):
     if request.method == 'POST':
-        pass
+        form = NewsForm(request.POST)
     else:
         form = NewsForm()
     return render(request, 'news/add_news.html', {'form': form})
