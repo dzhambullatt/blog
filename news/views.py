@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.views.generic import ListView
 from .forms import NewsForm
-
 from .models import *
+
+
+class HomeNews(ListView):
+    model = News
+
 
 
 def index(request):
