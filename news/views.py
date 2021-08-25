@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from .forms import NewsForm
 from .models import *
 
@@ -45,7 +45,7 @@ class NewsByCategory(ListView):
 class ViewNews(DetailView):
     model = News
     context_object_name = 'news_item'
-    # template_name = 'news/news_detail.html'
+    # template_name = 'news/news_detail.html' #этот темплейт используется по умолчанию
 
 # def get_category(request, category_id):
 #     news = News.objects.filter(category_id=category_id)
@@ -57,17 +57,21 @@ class ViewNews(DetailView):
 #     news_item = News.objects.get(pk=news_id)
 #     return render(request, 'news/view_news.html', {"news_item": news_item})
 
+class CreateNews(CreateView):
+    form_class = NewsForm
+    template_name = 'news/add_news.html'
 
-def add_news(request):
-    if request.method == 'POST':
-        form = NewsForm(request.POST)
-        if form.is_valid():
-            #print(form.cleaned_data)
-            #news = News.objects.create(**form.cleaned_data)
-            news = form.save()
-            return redirect(news)
-    else:
-        form = NewsForm()
-    return render(request, 'news/add_news.html', {
-        'form': form
-    })
+
+# def add_news(request):
+#     if request.method == 'POST':
+#         form = NewsForm(request.POST)
+#         if form.is_valid():
+#             #print(form.cleaned_data)
+#             #news = News.objects.create(**form.cleaned_data)
+#             news = form.save()
+#             return redirect(news)
+#     else:
+#         form = NewsForm()
+#     return render(request, 'news/add_news.html', {
+#         'form': form
+#     })
